@@ -28,7 +28,9 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error: AxiosError<ApiResponse<any>>) => {
-    if (error.response?.status === 401) {
+    const isAuthRoute = error.config?.url?.includes('/auth/login') ||
+      error.config?.url?.includes('/auth/register');
+    if (error.response?.status === 401 && !isAuthRoute) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';
@@ -82,15 +84,15 @@ export const favouriteApi = {
     return response.data.data!;
   },
 
-  addFavourite: async (propertyId: string): Promise<void> => {    
+  addFavourite: async (propertyId: string): Promise<void> => {
     await api.post('/favourites', { propertyId });
   },
 
-  removeFavourite: async (propertyId: string): Promise<void> => {  
+  removeFavourite: async (propertyId: string): Promise<void> => {
     await api.delete(`/favourites/${propertyId}`);
   },
 
-  checkStatus: async (propertyId: string): Promise<boolean> => {   
+  checkStatus: async (propertyId: string): Promise<boolean> => {
     const response = await api.get<ApiResponse<{ isFavourite: boolean }>>(
       `/favourites/status/${propertyId}`
     );
