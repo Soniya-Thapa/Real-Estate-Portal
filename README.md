@@ -18,7 +18,7 @@ A full-stack web application for browsing properties and managing favourites. Bu
 ## Project Structure
 
 ```
-real-estate-portal/
+Real-Estate-Portal/
 ├── frontend/          # React app
 │   └── src/
 │       ├── components/    # Alert, Layout, PropertyCard, ProtectedRoute
@@ -52,11 +52,10 @@ real-estate-portal/
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
-cd real-estate-portal
+git clone https://github.com/Soniya-Thapa/Real-Estate-Portal
+cd Real-Estate-Portal
 ```
 
-````markdown
 ### 2. Backend setup
 
 ```bash
@@ -70,7 +69,7 @@ npm install
 > ```
 
 > **Supabase users:** Get your connection string from Project Settings → Database → Connection string (use the "Transaction" pooler URL).
-```
+
 
 ### 3. Initialize the database
 
@@ -189,4 +188,5 @@ The app will open at `http://localhost:5173`
 - At least 8 characters
 - At least one uppercase letter
 - At least one lowercase letter
-- At least one number# -Real-Estate-Portal-
+- At least one number
+
